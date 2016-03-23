@@ -1,0 +1,52 @@
+//Import declarations
+@import "../../node_modules/bootstrap/less/bootstrap";
+
+//Bootstrap variable overrides
+@navbar-height: 40px;
+@navbar-default-color: #b6c096;
+@navbar-default-link-color: #735f8e;
+@navbar-default-link-hover-color: #cccccc;
+@screen-sm: 550px;
+
+body {
+    padding-top: @navbar-height;
+    background-color: white;
+}
+
+#mainNavigationBar {
+    .navbar;
+    .navbar-default;
+    .navbar-fixed-top;
+
+    .navbar-brand,
+    .navbar-brand:hover {
+        color: white;
+    }
+
+    background-color: #b6c096;
+}
+
+.form-group > label {
+    margin-top: 10px;
+}
+
+
+.form-group span {
+    display:block;
+    text-align:center
+}
+
+//.navbar-nav {
+//    @media (max-width: @grid-float-breakpoint-max) {
+//        padding-left: 50px;
+//        line-height: 40px;
+//    }
+//
+//    > li > a {
+//        line-height: @line-height-computed;
+//        &:hover,
+//        &:focus {
+//            background-image: none;
+//        }
+//    }
+//}
