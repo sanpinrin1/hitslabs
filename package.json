@@ -1,0 +1,16 @@
+{
+    "name": "hitslabs",
+    "description": "",
+    "version": "0.0.0",
+    "author": [
+        "Brian Nadzan"
+    ],
+    "main": "hitslabs.js",
+    "dependencies": {
+        "express": "4.13.4",
+        "express-handlebars": "3.0.0"
+    },
+    "scripts": {
+        "compileStyle": "./bin/compileStyle.sh"
+    }
+}
