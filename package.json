@@ -1,6 +1,6 @@
 {
     "name": "hitslabs",
-    "description": "",
+    "description": "hitslabs.com",
     "version": "0.0.0",
     "author": [
         "Brian Nadzan"
@@ -9,6 +9,9 @@
     "dependencies": {
         "express": "4.13.4",
         "express-handlebars": "3.0.0"
+    },
+    "repository": {
+    	"url": "git://github.com/Hitslabs/hitslabs.git"
     },
     "scripts": {
         "compileStyle": "./bin/compileStyle.sh"

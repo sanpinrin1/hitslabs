@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 
 <head>
@@ -9,6 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CDN -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="stylesheets/main.css"/>
     {{{ sections.stylesheets }}}
@@ -16,35 +19,51 @@
 </head>
 <body>
 
-<header><img src="/images/HITSLab.png"
-</header>
+    <header>
 
-    <!-- Topmost navigation bar to be displayed on all pages -->
-    <nav id="mainNavigationBar" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">HITS Lab</a>
-            <button type="button" class="navbar-toggle collapsed" 
-				    data-toggle="collapse" data-target="#navbarItems">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div id="navbarItems" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/search">Search</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+        <!-- Topmost navigation bar to be displayed on all pages -->
+        <nav id="mainNavigationBar" role="navigation">
+            <div class="navbar-header">
+                <a class="logo" href="/"><img src="/images/HITSLAB_LOGO.jpg" class="img-responsive"/> </a>
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbarItems">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbarItems" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/"{{{ home }}}>Home</a></li>
+                    <li><a href="/search"{{{ search }}}>Search</a></li>
+                    <li><a href="/login"{{{ login }}}>Login</a></li>
+                    <li><a href="/about" {{{ about }}}>About</a></li>
+                    <li><a href="/contact" {{{ contact }}}>Contact</a></li>
+                    </ul>
 
-    {{{ body }}}
+                <ul class="nav navbar-nav navbar-right social" >
+                    <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-lg fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+    </header>
+
+  {{{ body }}}
 
     <!-- Javascript -->
     <script src="libraries/jquery/dist/jquery.js"></script>
     {{{ sections.javascript }}}
+
+    <footer class="footer" class="navbar-fixed-bottom">
+        <div class="container">
+            <p>Copyright &copy 2016 Hitslab LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 

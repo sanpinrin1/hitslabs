@@ -1,52 +1,65 @@
-//Import declarations
 @import "../../node_modules/bootstrap/less/bootstrap";
 
 //Bootstrap variable overrides
-@navbar-height: 40px;
+@navbar-height: 53px;
 @navbar-default-color: #b6c096;
 @navbar-default-link-color: #735f8e;
-@navbar-default-link-hover-color: #cccccc;
+@navbar-default-link-hover-color: white;
+
 @screen-sm: 550px;
 
 body {
     padding-top: @navbar-height;
     background-color: white;
+    padding-left: 1cm;
+    padding-right: 1cm;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 
+.logo {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  float: left;
+}
 #mainNavigationBar {
     .navbar;
     .navbar-default;
     .navbar-fixed-top;
-
     .navbar-brand,
     .navbar-brand:hover {
         color: white;
     }
-
     background-color: #b6c096;
+//    font-size: 1.5em;
 }
 
 .form-group > label {
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
+#navbarItems li a.current {
+  font-weight: 900;
+  border-bottom: 3px solid #735f8e;
+}
 
 .form-group span {
     display:block;
-    text-align:center
+    text-align:center;
 }
 
-//.navbar-nav {
-//    @media (max-width: @grid-float-breakpoint-max) {
-//        padding-left: 50px;
-//        line-height: 40px;
-//    }
-//
-//    > li > a {
-//        line-height: @line-height-computed;
-//        &:hover,
-//        &:focus {
-//            background-image: none;
-//        }
-//    }
-//}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #b6c096;
+  color: #735f8e;
+  left: 0px;
+}

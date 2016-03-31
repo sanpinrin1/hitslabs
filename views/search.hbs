@@ -1,5 +1,39 @@
-<h1>Doctor Search</h1>
+<!DOCTYPE>
+<html>
+
+<h1 style="color:#735f8e; font-size:300%;"> Doctor Search</h1>
+
 <p>
-    Search HITSLab repository of physicians.
+    Search HITS Lab repository of physicians.
+
+<form action="/doctor.search" method="POST">
+
+    <input type="text" size="32" name="doctorname" placeholder="Enter Name or Speciality"/> <br>
+
+    <input type="location" size="32" name="location" placeholder="Location" /> <br>
+
+    <input type="submit" class="styled-button-1" value="Search" />
+
+    <style type="text/css">
+        .styled-button-1 {
+            -webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+            -moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+            box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+            color:#735f8e;
+            background-color:#b6c096;
+            border-radius:5px;
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            border:none;
+            font-family:'Helvetica Neue',Arial,sans-serif;
+            font-size:16px;
+            font-weight:700;
+            height:36px;
+            padding:4px 16px;
+            text-shadow:#FE6 0 1px 0
+        }
+    </style>
+</form>
 
 </p>
+</html>
