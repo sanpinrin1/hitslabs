@@ -14,6 +14,7 @@ var exphbs = require("express-handlebars")({
     }
 });
 var route = express.Router();
+var searchService = require("./lib/searchNPI");
 
 //Create and configure our Express app
 var app = express();
@@ -34,7 +35,7 @@ app.get("/", function(req, res) {
 //About path
 app.get("/about", function(req, res) {
     res.render("about.hbs", {
-            about: 'class="current"',
+        about: 'class="current"',
     });
 });
 
@@ -59,6 +60,9 @@ app.get("/contact", function(req, res) {
         contact: 'class="current"',
     });
 });
+
+// Web service providing NPI database search
+app.get("/searchNPI", searchService);
 
 //404 page not found handler
 app.use(function(err, req, res, next) {

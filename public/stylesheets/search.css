@@ -1,0 +1,27 @@
+#resultsTable {
+    border: 1px solid black;
+}
+
+#resultsTable td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 1px;
+}
+
+.styled-button-1 {
+    -webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+    -moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+    box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+    color:#735f8e;
+    background-color:#b6c096;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:none;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:16px;
+    font-weight:700;
+    height:36px;
+    padding:4px 16px;
+    text-shadow:#FE6 0 1px 0
+}
