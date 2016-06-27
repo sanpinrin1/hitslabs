@@ -1,0 +1,291 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="jquery-1.12.2.min.js"></script>
+
+<script>
+</script>
+
+<style>
+th{
+  background-color:#b6c096;
+}
+tr{
+  font-size: 105%;
+  height: 30px;
+  
+}
+#map{
+      width: 500px;
+      height: 400px;
+    }
+#dawg{
+    float:right;
+}
+</style>
+<title>HITS Lab</title>
+
+    <!-- Page metadata -->
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- CDN -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/><title>HITS Lab</title>
+
+    <!-- Page metadata -->
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- CDN -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+
+<body>
+<div class="wrapper">
+  <header>
+
+        <!-- Topmost navigation bar to be displayed on all pages -->
+        <nav id="mainNavigationBar" role="navigation">
+            <div class="navbar-header">
+                <a style="height:70px;" class="logo" href="Sample.php"><img src="hitsl_logo.jpg" class="img-responsive"> </a>
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbarItems">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbarItems" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.php">Home</a></li>
+                    <li><a href="index.html">Search</a></li>
+                    <li><a href="/login"{{{ login }}}>Login</a></li>
+                    <li><a href="/about" {{{ about }}}>About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right social" >
+                    <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-lg fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+    </header>
+	<h1 style="color:#735f8e; font-size:300%;"> Doctor Search</h1>
+	
+	
+	<p>
+    Search HITSLab directory of locations and physicians
+	<img style="float:right;"src="hitsl_logo.jpg" alt="hitslabs logo" style="width:304px;height:198px;">
+	<form id="myform" action="<?PHP echo $_SERVER['SCRIPT_NAME'] ?>">
+		<select style="height:27px;" id="speciality" name="special">	
+      	    <option value="">No Speciality</option>
+			<option value="207L00000X">Addiction Medicine</option>
+			<option value="207K00000X">Allergy and Immunology</option>
+			<option value="261QA1903X">Ambulatory Surgical Center</option>
+			<option value="207L00000X">Anesthesiology</option>
+			<option value="367H00000X">Anesthesiology Assistant</option>
+			<option value="231H00000X">Audiologist</option>
+			<option value="208G00000X">Cardiac Surgery</option>
+			<option value="207RC0000X">Cardiology</option>
+			<option value="367A00000X">Certified Nurse Midwife</option>
+			<option value="367500000X">Certified Registered Nurse Anesthetist (CRNA)</option>
+			<option value="111N00000X">Chiropractic</option>
+			<option value="291U00000X">Clinical Laboratory</option>
+			<option value="208C00000X">Colorectal Surgery</option>
+			<option value="207RC0200X">Critical Care</option>
+			<option value="207N00000X">Dermatology</option>
+			<option value="2085R0202X">Diagnostic Radiology</option>
+			<option value="207P00000X">Emergency Medicine</option>
+			<option value="207RE0101X">Endocrinology</option>
+			<option value="207Q00000X">Family Practice</option>
+			<option value="208D00000X">General Practice</option>
+			<option value="208600000X">General Surgery</option>
+			<option value="207RG0300X">Geriatric Medicine</option>
+			<option value="207QG0300X">Geriatric Psychiatry</option>
+			<option value="207RG0100X">Gastroenterology</option>
+			<option value="207VX0201X">Gynecological Oncology</option>
+			<option value="2086S0105X">Hand Surgery</option>
+			<option value="207RH0000X">Hematology</option>
+			<option value="2086H0002X">Hospice and Palliative Care</option>
+			<option value="293D00000X">Independent Diagnostic Testing Facility </option>
+			<option value="207RI0200X">Infectious Disease</option>
+			<option value="208VP0014X">Interventional Pain Management</option>
+			<option value="207R00000X">Internal Medicine</option>
+			<option value="261QR0208X">Mammography Center</option>
+			<option value="207RX0202X">Medical Oncology</option>
+			<option value="207RN0300X">Nephrology</option>
+			<option value="2084N0400X">Neurology</option>
+			<option value="2084A0401X">Neuropsychiatry</option>
+			<option value="207T00000X">Neurosurgery</option>
+			<option value="207U00000X">Nuclear Medicine</option>
+			<option value="363L00000X">Nurse Practitioner</option>
+			<option value="207V00000X">Obstetrics & Gynecology</option>
+			<option value="152W00000X">Optometry</option>
+			<option value="207W00000X">Ophthalmology</option>
+			<option value="1223S0112X">Oral Surgery(Dentist only)</option>
+			<option value="207X00000X">Orthopedic Surgery</option>
+			<option value="204D00000X">Osteopathic Manipulative Medicine</option>
+			<option value="207Y00000X">Otolaryngology</option>
+			<option value="208VP0000X">Pain Management</option>
+			<option value="207ZP0101X">Pathology</option>
+			<option value="208000000X">Pediatric Medicine</option>
+			<option value="2086S0129X">Peripheral Vascular Disease</option>
+			<option value="225100000X">Physical Therapy</option>
+			<option value="208100000X">Physical Medicine and Rehabilitation</option>
+			<option value="208200000X">Plastic and Reconstructive Surgery</option>
+			<option value="213E00000X">Podiatry</option>
+			<option value="251K00000X">Public Health or Welfare Agency</option>
+			<option value="207RP1001X">Pulmonary Disease</option>
+			<option value="2083A0100X">Preventive Medicine</option>
+			<option value="2084P0800X">Psychiatry</option>
+			<option value="103T00000X">Psychologist, Clinical</option>
+			<option value="261QR0200X">Radiation Therapy Center</option>
+			<option value="2085R0001X">Radiation Oncology</option>
+			<option value="133V00000X">Registered Dietitian or Nutrition Professiona</option>
+			<option value="207RR0500X">Rheumatology</option>
+			<option value="235Z00000X">Speech Language Pathologist</option>
+			<option value="207XX0005X">Sports Medicine</option>
+			<option value="2086X0206X">Surgical Oncology</option>
+			<option value="208G00000X">Thoracic Surgery</option>
+			<option value="208800000X">Urology</option>
+			<option value="2086S0129X">Vascular Surgery</option>
+			<option value="174M00000X">Veterinarian</option>
+			<option value="251V00000X">Voluntary Health or Charitable Agency</option>
+				 
+		</select>
+		
+   	 	<input id="addressInput" type="text" size="45" name="address" placeholder="Enter address, city and state or city state"> 
+		&nbsp <select style="height:27px;" id="radius" name="radius"> 
+			<option value="10">10</option>
+			<option value="25">25</option>
+			<option value="50">50</option>
+		</select> &nbsp Search Distance  
+		<br> <h4> This location/Physician search will currently find any facility in NJ, NY and CT State. To submit physician list <a href="contact.html">contact us</a></h4>
+		<br>
+		<input type="button" onclick="loadDoc()" value="search">
+		
+
+	</form>  <br>
+<div style="float:left" id="response"></div>
+
+<div id="dawg" style="display:none">
+<iframe id="myFrame" src="https://www.coppertone.com/" width="500" height="700"></iframe>
+</div>
+
+
+<div style="display:none" id="displayArea"></div>
+<div id="fileDisplayArea"></div><br>
+<div border='1' id="show"></div> 
+
+
+
+<!-- Clean up. -->
+<?php
+  mysqli_free_result($Organization);
+  mysqli_close($connection);
+?>
+
+<script>
+	var map;
+    var markers = [];
+    var infoWindow;
+    var locationSelect;   
+
+function loadDoc() {
+	var latitude="";var longtitude="";
+	var radius = document.getElementById('radius').value;
+	var taxonomy = document.getElementById('speciality').value;
+		document.getElementById("dawg").style.display = "block";
+		document.getElementById("fileDisplayArea").innerHTML = "SEARCHING...";
+	if(taxonomy=="225100000X"){
+		document.getElementById("myFrame").src = "https://www.activeforever.com/orthopedics";         	
+	}
+	else if(taxonomy=="207N00000X"){
+		document.getElementById("myFrame").src = "https://www.coppertone.com/";         	
+	}
+	else if(taxonomy=="207VG0400X"){
+		document.getElementById("myFrame").src = "http://www.ob-tampons.com/product-details/regulartampons";         	
+	}
+	else if(taxonomy=="174M00000X"){
+		document.getElementById("myFrame").src = "https://www.petbasics.com/products/seresto/?WHGRedir=1";         	
+	}
+	else if(taxonomy==""){
+		document.getElementById("myFrame").src = "https://www.coppertone.com/";         	
+	}
+
+	var address = document.getElementById("addressInput").value;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({address: address}, function(results, status) {
+		latitude = results[0].geometry.location.lat();
+		longitude = results[0].geometry.location.lng();
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+    		if (xhttp.readyState == 4 && xhttp.status == 200) {
+      			document.getElementById("fileDisplayArea").innerHTML = xhttp.responseText;
+			}
+		};
+		xhttp.open("GET", "getItDone.php?lng="+longitude+"&lat="+latitude+"&tax="+taxonomy+"&radius="+radius, true);
+  		xhttp.send();		
+
+	});
+ 	 
+}
+
+	
+	
+function ad(){
+  var adCheck = document.getElementById('speciality').value;
+  document.getElementById("dawg").style.display = "block";
+  document.getElementById("displayArea").innerHTML = adCheck;
+  if(adCheck=="Orthopedy"){
+     document.getElementById("myFrame").src = "https://www.activeforever.com/orthopedics";         	
+  }
+  if(adCheck=="Dermatology"){
+     document.getElementById("myFrame").src = "https://www.coppertone.com/";         	
+  }
+  if(adCheck=="Gynecology"){
+     document.getElementById("myFrame").src = "http://www.ob-tampons.com/product-details/regulartampons";         	
+  }
+}
+  
+function clearLocations() {
+     infoWindow.close();
+     for (var i = 0; i < markers.length; i++) {
+       markers[i].setMap(null);
+     }
+     markers.length = 0;
+
+     locationSelect.innerHTML = "";
+     var option = document.createElement("option");
+     option.value = "none";
+     option.innerHTML = "See all results:";
+     locationSelect.appendChild(option);
+}
+
+function initMap() {
+     var mapDiv = document.getElementById('map');
+     var map = new google.maps.Map(mapDiv, {center: {lat: 44.540, lng: -78.546},zoom: 8});
+}
+
+
+</script>
+   <script src="libraries/jquery/dist/jquery.js"></script>
+   <script src="https://maps.googleapis.com/maps/api/js" async defer></script>  
+   <script src="show.js"></script>
+   <div class="push"></div>
+   </div>
+   <div class="footer" class="navbar-fixed-bottom">
+      <div class="container">
+         <p>Copyright &copy 2016 Hitslab LLC. All Rights Reserved.</p>
+      </div>
+   </div>
+
+</body>
+</html>
