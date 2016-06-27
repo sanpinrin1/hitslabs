@@ -81,10 +81,10 @@ tr{
 	
 	<p>
     Search HITSLab directory of locations and physicians
-	<img style="float:right;"src="hitsl_logo.jpg" alt="hitslabs logo" style="width:304px;height:198px;">
-	<form id="myform" action="<?PHP echo $_SERVER['SCRIPT_NAME'] ?>">
+	<img style="float:right;"src="hitsl_logo.jpg" alt="hitslabs logo" style="width:304px;height:198px;"> <!-- Logo at the right of screen above the commercial -->
+	<form id="myform" action="<?PHP echo $_SERVER['SCRIPT_NAME'] ?>"> <--! form use to process address -->
 		<select style="height:27px;" id="speciality" name="special">	
-      	    <option value="">No Speciality</option>
+      	    <option value="">No Speciality</option> <--! taxonomies list -->
 			<option value="207L00000X">Addiction Medicine</option>
 			<option value="207K00000X">Allergy and Immunology</option>
 			<option value="261QA1903X">Ambulatory Surgical Center</option>
@@ -183,26 +183,20 @@ tr{
 <div id="fileDisplayArea"></div><br>
 <div border='1' id="show"></div> 
 
-
-
-<!-- Clean up. -->
-<?php
-  mysqli_free_result($Organization);
-  mysqli_close($connection);
-?>
-
 <script>
-	var map;
+   var map;
     var markers = [];
     var infoWindow;
     var locationSelect;   
 
+<--! function used to get address in latitude and longitude and display advertising -->
 function loadDoc() {
 	var latitude="";var longtitude="";
-	var radius = document.getElementById('radius').value;
-	var taxonomy = document.getElementById('speciality').value;
+	var radius = document.getElementById('radius').value; <--! get radius selected-->
+	var taxonomy = document.getElementById('speciality').value; <--! get speciality selected-->
 		document.getElementById("dawg").style.display = "block";
 		document.getElementById("fileDisplayArea").innerHTML = "SEARCHING...";
+	<--! based on speciality selected appropriate advertisement will be displayed-->
 	if(taxonomy=="225100000X"){
 		document.getElementById("myFrame").src = "https://www.activeforever.com/orthopedics";         	
 	}
@@ -218,43 +212,30 @@ function loadDoc() {
 	else if(taxonomy==""){
 		document.getElementById("myFrame").src = "https://www.coppertone.com/";         	
 	}
-
+	
+	<--! geocode function that turns address to latitude and longitude-->
 	var address = document.getElementById("addressInput").value;
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({address: address}, function(results, status) {
+       var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({address: address}, function(results, status) {
 		latitude = results[0].geometry.location.lat();
 		longitude = results[0].geometry.location.lng();
-		
+	
+		<--! ajax function that sends longitude, latitude, speciality and radius to php file -->		
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
     		if (xhttp.readyState == 4 && xhttp.status == 200) {
+    			<--! "DIV" where ajax response is displayed -->
       			document.getElementById("fileDisplayArea").innerHTML = xhttp.responseText;
 			}
 		};
+		
 		xhttp.open("GET", "getItDone.php?lng="+longitude+"&lat="+latitude+"&tax="+taxonomy+"&radius="+radius, true);
   		xhttp.send();		
 
 	});
  	 
 }
-
-	
-	
-function ad(){
-  var adCheck = document.getElementById('speciality').value;
-  document.getElementById("dawg").style.display = "block";
-  document.getElementById("displayArea").innerHTML = adCheck;
-  if(adCheck=="Orthopedy"){
-     document.getElementById("myFrame").src = "https://www.activeforever.com/orthopedics";         	
-  }
-  if(adCheck=="Dermatology"){
-     document.getElementById("myFrame").src = "https://www.coppertone.com/";         	
-  }
-  if(adCheck=="Gynecology"){
-     document.getElementById("myFrame").src = "http://www.ob-tampons.com/product-details/regulartampons";         	
-  }
-}
-  
+<--! function to be used to clear markers on the google maps -->
 function clearLocations() {
      infoWindow.close();
      for (var i = 0; i < markers.length; i++) {
@@ -268,7 +249,7 @@ function clearLocations() {
      option.innerHTML = "See all results:";
      locationSelect.appendChild(option);
 }
-
+<--! Function to be used to initiate google map -->
 function initMap() {
      var mapDiv = document.getElementById('map');
      var map = new google.maps.Map(mapDiv, {center: {lat: 44.540, lng: -78.546},zoom: 8});
