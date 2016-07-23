@@ -3,22 +3,41 @@
 <script src="jquery-1.12.2.min.js"></script>
 
 <script>
+function stopped(){
+    if(this.value.length > 0) { 
+        document.getElementById('clickSearch').disabled = false; 
+		document.getElementById('fileDisplayArea').innerHTML = "I don't know....";
+		
+    } else { 
+        document.getElementById('clickSearch').disabled = true;
+		document.getElementById('fileDisplayArea').innerHTML = "empty";
+    }
+}
 </script>
 
 <style>
 th{
   background-color:#b6c096;
+
 }
 tr{
   font-size: 105%;
   height: 30px;
   
 }
+#clickSearch{
+	border-radius:4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	background-color:#b6c096;
+}
 #map{
       width: 500px;
       height: 400px;
     }
-#dawg{
+#Advertisement{
     float:right;
 }
 </style>
@@ -39,6 +58,13 @@ tr{
     <!-- CDN -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="main.css"/>
+	
+	<!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	
 </head>
 
 <body>
@@ -48,7 +74,7 @@ tr{
         <!-- Topmost navigation bar to be displayed on all pages -->
         <nav id="mainNavigationBar" role="navigation">
             <div class="navbar-header">
-                <a style="height:70px;" class="logo" href="Sample.php"><img src="hitsl_logo.jpg" class="img-responsive"> </a>
+                <a style="height:70px;" class="logo" href="index.html"><img src="hitsl_logo.jpg" class="img-responsive"> </a>
                 <button type="button" class="navbar-toggle collapsed"
                         data-toggle="collapse" data-target="#navbarItems">
                     <span class="icon-bar"></span>
@@ -61,8 +87,8 @@ tr{
                 <ul class="nav navbar-nav">
                     <li><a href="Home.php">Home</a></li>
                     <li><a href="index.html">Search</a></li>
-                    <li><a href="/login"{{{ login }}}>Login</a></li>
-                    <li><a href="/about" {{{ about }}}>About</a></li>
+                    <li><a href="Login.php">Login</a></li>
+                    <li><a href="About.php">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
 
@@ -80,30 +106,128 @@ tr{
 	
 	
 	<p>
-    Search HITSLab directory of locations and physicians
-	<img style="float:right;"src="hitsl_logo.jpg" alt="hitslabs logo" style="width:304px;height:198px;"> <!-- Logo at the right of screen above the commercial -->
-	<form id="myform" action="<?PHP echo $_SERVER['SCRIPT_NAME'] ?>"> <--! form use to process address -->
-		<select style="height:27px;" id="speciality" name="special">	
-      	    <option value="">No Speciality</option> <--! taxonomies list -->
+    <h4> Search HITSLABS Directory of Locations and Physicians </h4>
+	
+	<form id="myform" action="<?PHP echo $_SERVER['SCRIPT_NAME'] ?>" onkeypress="return event.keyCode != 13;">
+		<h4><select style="height:27px;" id="speciality" name="special">	
+      	    <option value="">No Specialty</option>
+			<option value="251E00000X">Agencies/Home Health</option>
+			<option value="251G00000X">Agencies/Hospice Care, Community Based</option>
 			<option value="207L00000X">Addiction Medicine</option>
 			<option value="207K00000X">Allergy and Immunology</option>
+			<option value="207KA0200X">Allergy and Immunology/Allergy</option>
+			<option value="207KI0005X">Allergy and Immunology/Clinical & Laboratory Immunology</option>
+			<option value="261QM0801X">Ambulatory Health Care Facilities/Clinic/Center, Mental Health</option>
+			<option value="261QR0401X">Ambulatory Health Care Facilities/Clinic/Center, Rehabilitation, Comprehensive Outpatient Rehabilitation Facility</option>
+			<option value="261QE0700X">Ambulatory Health Care Facilities/End-Stage Renal Disease Treatment</option>
+			<option value="261QF0400X">Ambulatory Health Care Facilities/Federally Qualified Health Center</option>
+			<option value="261QR0400X">Ambulatory Health Care Facilities/Clinic/Center, Rehabilitation</option>
+			<option value="261QR1300X">Ambulatory Health Care Facilities/Clinic/Center, Rural Health</option>
+			<option value="3416A0800X">Ambulance, Air Transport</option>
+			<option value="3416L0300X">Ambulance, Land Transport</option>
+			<option value="3416S0300X">Ambulance, Water Transport</option>
 			<option value="261QA1903X">Ambulatory Surgical Center</option>
 			<option value="207L00000X">Anesthesiology</option>
+			<option value="207LA0401X">Anesthesiology/Addiction Medicine</option>
+			<option value="207LC0200X">Anesthesiology/Critical Care Medicine</option>
+			<option value="207LH0002X">Anesthesiology/Hospice and Palliative Medicine</option>
+			<option value="207LP2900X">Anesthesiology/Pain Medicine</option>
+			<option value="207LP3000X">Anesthesiology/Pediatric Anesthesiology</option>
 			<option value="367H00000X">Anesthesiology Assistant</option>
 			<option value="231H00000X">Audiologist</option>
+			<option value="231HA2400X">Audiologist, Assistive Technology Practitioner</option>
 			<option value="208G00000X">Cardiac Surgery</option>
 			<option value="207RC0000X">Cardiology</option>
 			<option value="367A00000X">Certified Nurse Midwife</option>
 			<option value="367500000X">Certified Registered Nurse Anesthetist (CRNA)</option>
 			<option value="111N00000X">Chiropractic</option>
+			<option value="111NI0013X">Chiropractor, Independent Medical Examiner</option>
+			<option value="111NI0900X">Chiropractor, Internist</option>
+			<option value="111NN0400X">Chiropractor, Neurology</option>
+			<option value="111NN1001X">Chiropractor, Nutrition</option>
+			<option value="111NX0100X">Chiropractor, Occupational Medicine</option>
+			<option value="111NX0800X">Chiropractor, Orthopedic</option>
+			<option value="111NP0017X">Chiropractor, Pediatric Chiropractor</option>
+			<option value="111NR0200X">Chiropractor, Radiology</option>
+			<option value="111NR0400X">Chiropractor, Rehabilitation</option>
+			<option value="111NS0005X">Chiropractor, Sports Physician</option>
+			<option value="111NT0100X">Chiropractor, Thermography</option>
+			<option value="261QA1903X">Clinic-Center, Ambulatory Surgical</option>
+			<option value="261QR0200X">Clinic/Center, Radiology</option>
+			<option value="261QR0208X">Clinic-Center, Radiology, Mammography</option>
+			<option value="261QR0207X">Clinic-Center, Radiology, Mobile Mammography</option>
 			<option value="291U00000X">Clinical Laboratory</option>
+			<option value="364S00000X">Clinical Nurse Specialist</option>
+			<option value="364SA2100X">Clinical Nurse Specialist, Acute Care</option>
+			<option value="364SA2200X">Clinical Nurse Specialist, Adult Health</option>
+			<option value="364SC2300X">Clinical Nurse Specialist, Chronic Care</option>
+			<option value="364SC1501X">Clinical Nurse Specialist, Community Health/Public Health</option>
+			<option value="364SC0200X">Clinical Nurse Specialist, Critical Care Medicine</option>
+			<option value="364SE0003X">Clinical Nurse Specialist, Emergency</option>
+			<option value="364SE1400X">Clinical Nurse Specialist, Ethics</option>
+			<option value="364SF0001X">Clinical Nurse Specialist, Family Health</option>
+			<option value="364SG0600X">Clinical Nurse Specialist, Gerontology</option>
+			<option value="364SH1100X">Clinical Nurse Specialist, Holistic</option>
+			<option value="364SH0200X">Clinical Nurse Specialist, Home Health</option>
+			<option value="364SI0800X">Clinical Nurse Specialist, Informatics</option>
+			<option value="364SL0600X">Clinical Nurse Specialist, Long-term Care</option>
+			<option value="364SM0705X">Clinical Nurse Specialist, Medical-Surgical</option>
+			<option value="364SN0000X">Clinical Nurse Specialist, Neonatal</option>
+			<option value="364SN0800X">Clinical Nurse Specialist, Neuroscience</option>
+			<option value="364SX0106X">Clinical Nurse Specialist, Occupational Health</option>
+			<option value="364SX0200X">Clinical Nurse Specialist, Oncology</option>
+			<option value="364SX0204X">Clinical Nurse Specialist, Oncology, Pediatrics</option>
+			<option value="364SP0200X">Clinical Nurse Specialist, Pediatrics</option>
+			<option value="364SP1700X">Clinical Nurse Specialist, Perinatal</option>
+			<option value="364SP2800X">Clinical Nurse Specialist, Perioperative</option>
+			<option value="364SP0808X">Clinical Nurse Specialist, Psychiatric/Mental Health</option>
+			<option value="364SP0809X">Clinical Nurse Specialist, Psychiatric/Mental Health, Adult</option>
+			<option value="364SP0807X">Clinical Nurse Specialist, Psychiatric/Mental Health, Child & Adolescent</option>
+			<option value="364SP0810X">Clinical Nurse Specialist, Psychiatric/Mental Health, Child & Family</option>
+			<option value="364SP0811X">Clinical Nurse Specialist, Psychiatric/Mental Health, Chronically Illness</option>
+			<option value="364SP0812X">Clinical Nurse Specialist, Psychiatric/Mental Health, Community</option>
+			<option value="364SP0813X">Clinical Nurse Specialist, Psychiatric/Mental Health, Geropsychiatric</option>
+			<option value="364SR0400X">Clinical Nurse Specialist, Rehabilitation</option>
+			<option value="364SS0200X">Clinical Nurse Specialist, School</option>
+			<option value="364ST0500X">Clinical Nurse Specialist, Transplantation</option>
+			<option value="364SW0102X">Clinical Nurse Specialist, Women’s Health</option>
+			<option value="208C00000X">Colon & Rectal Surgery</option>
 			<option value="208C00000X">Colorectal Surgery</option>
 			<option value="207RC0200X">Critical Care</option>
+			<option value="1223S0112X">Dentist, Oral & Maxillofacial Surgery</option>
 			<option value="207N00000X">Dermatology</option>
+			<option value="207NI0002X">Dermatology, Clinical & Laboratory Dermatological Immunology</option>
+			<option value="207ND0101X">Dermatology, MOHS-Micrographic Surgery</option>
+			<option value="207ND0900X">Dermatology, Dermapathology</option>
+			<option value="207NP0225X">Dermatology, Pediatric Dermatology</option>
+			<option value="207NS0135X">Dermatology, Procedural Dermatology</option>
 			<option value="2085R0202X">Diagnostic Radiology</option>
+			<option value="133V00000X">Dietician, Registered</option>
+			<option value="133VN1006X">Dietician, Registered, Nutrition, Metabolic</option>
+			<option value="133VN1004X">Dietician, Registered, Nutrition, Pediatric</option>
+			<option value="133VN1005X">Dietician, Registered, Nutrition, Renal</option>
+			<option value="332B00000X">Durable Medical Equipment & Medical Supplies</option>
 			<option value="207P00000X">Emergency Medicine</option>
+			<option value="207PE0004X">Emergency Medicine, Emergency Medical Services</option>
+			<option value="207PH0002X">Emergency Medicine, Hospice and Palliative Medicine</option>
+			<option value="207PT0002X">Emergency Medicine, Medical Toxicology</option>
+			<option value="207PP0204X">Emergency Medicine, Pediatric Emergency Medicine</option>
+			<option value="207PS0010X">Emergency Medicine, Sports Medicine</option>
+			<option value="207PE0005X">Emergency Medicine, Undersea and Hyperbaric Medicine</option>
 			<option value="207RE0101X">Endocrinology</option>
-			<option value="207Q00000X">Family Practice</option>
+			<option value="207Q00000X">Family Medicine</option>
+			<option value="207QA0401X">Family Medicine, Addiction Medicine</option>
+			<option value="207QA0000X">Family Medicine, Adolescent Medicine</option>
+			<option value="207QA0505X">Family Medicine, Adult Medicine</option>
+			<option value="207QB0002X">Family Medicine, Bariatric Medicine</option>
+			<option value="207QG0300X">Family Medicine, Geriatric Medicine</option>
+			<option value="207QH0002X">Family Medicine, Hospice and Palliative Medicine</option>
+			<option value="207QS0010X">Family Medicine, Sports Medicine</option>
+			<option value="207QS1201X">Family Medicine, Sleep Medicine</option>
+			<option value="2088F0040X">Female Pelvic Medicine & Reconstructive Surgery</option>
+			<option value="282N00000X">General Acute Care Hospital</option>
+			<option value="282NC2000X">General Acute Care Hospital, Children</option>
+			<option value="282NC0060X">General Acute Care Hospital, Critical Access</option>
 			<option value="208D00000X">General Practice</option>
 			<option value="208600000X">General Surgery</option>
 			<option value="207RG0300X">Geriatric Medicine</option>
@@ -113,90 +237,326 @@ tr{
 			<option value="2086S0105X">Hand Surgery</option>
 			<option value="207RH0000X">Hematology</option>
 			<option value="2086H0002X">Hospice and Palliative Care</option>
+			<option value="2085H0002X">Hospice & Palliative Medicine</option>
+			<option value="284300000X">Hospitals/Special(ty) Hospital</option>
 			<option value="293D00000X">Independent Diagnostic Testing Facility </option>
 			<option value="207RI0200X">Infectious Disease</option>
 			<option value="208VP0014X">Interventional Pain Management</option>
 			<option value="207R00000X">Internal Medicine</option>
+			<option value="207RA0401X">Internal Medicine, Addiction Medicine</option>
+			<option value="207RA0000X">Internal Medicine, Adolescent Medicine</option>
+			<option value="207RA0201X">Internal Medicine, Allergy & Immunology</option>
+			<option value="207RB0002X">Internal Medicine, Bariatric Medicine</option>
+			<option value="207RC0000X">Internal Medicine, Cardiovascular Disease</option>
+			<option value="207RI0001X">Internal Medicine, Clinical & Laboratory Immunology</option>
+			<option value="207RC0001X">Internal Medicine, Clinical Cardiatric Electrophysiology</option>
+			<option value="207RC0200X">Internal Medicine, Critical Care Medicine</option>
+			<option value="207RE0101X">Internal Medicine, Endocrinology, Diabetes, & Metabolism</option>
+			<option value="207RG0300X">Internal Medicine, Geriatric Medicine</option>
+			<option value="207RH0000X">Internal Medicine, Hematology</option>
+			<option value="207RH0003X">Internal Medicine, Hematology & Oncology</option>
+			<option value="207RI0008X">Internal Medicine, Hepatology</option>
+			<option value="207RH0002X">Internal Medicine, Hospice and Palliative Medicine</option>
+			<option value="207RI0200X">Internal Medicine, Infectious Disease</option>
+			<option value="207RI0011X">Internal Medicine, Interventional Cardiology</option>
+			<option value="207RM1200X">Internal Medicine, Magnetic Resonance Imaging (MRI)</option>
+			<option value="207RX0202X">Internal Medicine, Medical Oncology</option>
+			<option value="207RN0300X">Internal Medicine, Nephrology</option>
+			<option value="207RP1001X">Internal Medicine, Pulmonary Disease</option>
+			<option value="207RR0500X">Internal Medicine, Rheumatology</option>
+			<option value="207RS0012X">Internal Medicine, Sleep Medicine</option>
+			<option value="207RS0010X">Internal Medicine, Sports Medicine</option>
+			<option value="207RT0003X">Internal Medicine, Transplant Hepatology</option>
+			<option value="282E00000X">Long Term Care Hospital</option>
 			<option value="261QR0208X">Mammography Center</option>
 			<option value="207RX0202X">Medical Oncology</option>
+			<option value="275N00000X">Medicare Defined Swing Bed Unit</option>
+			<option value="367A00000X">Midwife, Certified Nurse</option>
+			<option value="291900000X">Military Clinical Medical Laboratory</option>
 			<option value="207RN0300X">Nephrology</option>
+			<option value="204D00000X">Neuromusculoskeletal Medicine & OMM</option>
+			<option value="204C00000X">Neuromusculoskeletal Medicine, Sports Medicine</option>
+			<option value="207T00000X">Neurological Surgery</option>
 			<option value="2084N0400X">Neurology</option>
 			<option value="2084A0401X">Neuropsychiatry</option>
 			<option value="207T00000X">Neurosurgery</option>
 			<option value="207U00000X">Nuclear Medicine</option>
-			<option value="363L00000X">Nurse Practitioner</option>
+			<option value="207UN0903X">Nuclear Medicine, In Vivo & In Vitro Nuclear Medicine</option>
+			<option value="207UN0901X">Nuclear Medicine, Nuclear Cardiology</option>
+			<option value="207UN0902X">Nuclear Medicine, Nuclear Imaging & Therapy</option>
+			<option value="225X00000X">Occupational Therapist</option>
+			<option value="225XR0403X">Occupational Therapist, Driving and Community Mobility</option>
+			<option value="225XE0001X">Occupational Therapist, Environmental Modification</option>
+			<option value="225XE1200X">Occupational Therapist, Ergonomics</option>
+			<option value="225XF0002X">Occupational Therapist, Feeding, Eating &Swallowing</option>
+			<option value="225XG0600X">Occupational Therapist, Gerontology</option>
+			<option value="225XH1200X">Occupational Therapist, Hand</option>
+			<option value="225XH1300X">Occupational Therapist, Human Factors</option>
+			<option value="225XL0004X">Occupational Therapist, Low Vision</option>
+			<option value="225XM0800X">Occupational Therapist, Mental Health</option>
+			<option value="225XN1300X">Occupational Therapist, Neurorehabilitation</option>
+			<option value="225XP0200X">Occupational Therapist, Pediatrics</option>
+			<option value="225XP0019X">Occupational Therapist, Physical Rehabilitation</option>
 			<option value="207V00000X">Obstetrics & Gynecology</option>
+			<option value="207VB0002X">Obstetrics & Gynecology, Bariatric Medicine</option>
+			<option value="207VC0200X">Obstetrics & Gynecology, Critical Care Medicine</option>
+			<option value="207VF0040X">Obstetrics & Gynecology, Female Pelvic Medicine and Reconstructive Surgery</option>
+			<option value="207VX0201X">Obstetrics & Gynecology, Gynecologic Oncology</option>
+			<option value="207VG0400X">Obstetrics & Gynecology, Gynecology</option>
+			<option value="207VH0002X">Obstetrics & Gynecology, Hospice and Palliative Medicine</option>
+			<option value="207VM0101X">Obstetrics & Gynecology, Maternal & Fetal Medicine</option>
 			<option value="152W00000X">Optometry</option>
+			<option value="152WC0802X">Optometrist, Corneal and Contact Management</option>
+			<option value="152WL0500X">Optometrist, Low Vision Rehabilitation</option>
+			<option value="152WX0102X">Optometrist, Occupational Vision</option>
+			<option value="152WP0200X">Optometrist, Pediatrics</option>
+			<option value="152WS0006X">Optometrist, Sports Vision</option>
+			<option value="152WV0400X">Optometrist, Vision Therapy</option>
 			<option value="207W00000X">Ophthalmology</option>
+			<option value="204E00000X">Oral & Maxillofacial Surgery</option>
 			<option value="1223S0112X">Oral Surgery(Dentist only)</option>
 			<option value="207X00000X">Orthopedic Surgery</option>
+			<option value="207XS0114X">Orthopaedic Surgery/Adult Reconstructive Orthopaedic Surgery</option>
+			<option value="207XX0004X">Orthopaedic Surgery/Foot and Ankle Surgery</option>
+			<option value="207XS0106X">Orthopaedic Surgery/Hand Surgery</option>
+			<option value="207XS0117X">Orthopaedic Surgery/Orthopaedic Surgery of the Spine</option>
+			<option value="207XX0801X">Orthopaedic Surgery/Orthopaedic Trauma</option>
+			<option value="207XP3100X">Orthopaedic Surgery/Pediatric Orthopaedic Surgery</option>
+			<option value="207XX0005X">Orthopaedic Surgery/Sports Medicine</option>
+			<option value="335E00000X">Orthotic Supplier</option>
+			<option value="222Z00000X">Orthotist</option>
 			<option value="204D00000X">Osteopathic Manipulative Medicine</option>
 			<option value="207Y00000X">Otolaryngology</option>
+			<option value="207YS0123X">Otolaryngology/Facial Plastic Surgery</option>
+			<option value="207YX0602X">Otolaryngology/Otolaryngic Allergy</option>
+			<option value="207YX0905X">Otolaryngology/Otolaryngology/Facial Plastic Surgery</option>
+			<option value="207YX0901X">Otolaryngology/Otology &Neurotology</option>
+			<option value="207YP0228X">Otolaryngology/Pediatric Otolaryngology</option>
+			<option value="207YX0007X">Otolaryngology/Plastic Surgery within the Head & Neck</option>
+			<option value="207YS0012X">Otolaryngology/Sleep Medicine</option>
 			<option value="208VP0000X">Pain Management</option>
+			<option value="208VP0014X">Pain Medicine, Interventional Pain Medicine</option>
 			<option value="207ZP0101X">Pathology</option>
+			<option value="207ZP0102X">Pathology, Anatomic Pathology & Clinical Pathology</option>
+			<option value="207ZB0001X">Pathology, Blood Banking & Transfusion Medicine</option>
+			<option value="207ZP0104X">Pathology, Chemical Pathology</option>
+			<option value="207ZC0006X">Pathology, Clinical Pathology</option>
+			<option value="207ZP0105X">Pathology, Clinical Pathology/Laboratory Medicine</option>
+			<option value="207ZC0500X">Pathology, Cytopathology</option>
+			<option value="207ZD0900X">Pathology, Dermapathology</option>
+			<option value="207ZF0201X">Pathology, Forensic Pathology</option>
+			<option value="207ZH0000X">Pathology, Hematology</option>
+			<option value="207ZI0100X">Pathology, Immunopathology</option>
+			<option value="207ZM0300X">Pathology, Medical Microbiology</option>
+			<option value="207ZP0007X">Pathology, Molecular Genetic Pathology</option>
+			<option value="207ZN0500X">Pathology, Neuropathology</option>
+			<option value="207ZP0213X">Pathology, Pediatric Pathology</option>
 			<option value="208000000X">Pediatric Medicine</option>
+			<option value="2080A0000X">Pediatrics, Adolescent Medicine</option>
+			<option value="2080I0007X">Pediatrics, Clinical & Laboratory Immunology</option>
+			<option value="2080P0006X">Pediatrics, Developmental–Behavioral Pediatrics</option>
+			<option value="2080H0002X">Pediatrics, Hospice and Palliative Medicine</option>
+			<option value="2080T0002X">Pediatrics, Medical Toxicology</option>
+			<option value="2080N0001X">Pediatrics, Neonatal-Perinatal Medicine</option>
+			<option value="2080P0008X">Pediatrics, Neurodevelopmental Disabilities</option>
+			<option value="2080P0201X">Pediatrics, Pediatric Allergy & Immunology</option>
+			<option value="2080P0202X">Pediatrics, Pediatric Cardiology</option>
+			<option value="2080P0203X">Pediatrics, Pediatric Critical Care Medicine</option>
+			<option value="2080P0204X">Pediatrics, Pediatric Emergency Medicine</option>
+			<option value="2080P0205X">Pediatrics, Pediatric Endocrinology</option>
+			<option value="2080P0206X">Pediatrics, Pediatric Gastroenterology</option>
+			<option value="2080P0207X">Pediatrics, Pediatric Hematology-Oncology</option>
+			<option value="2080P0208X">Pediatrics, Pediatric Infectious Diseases</option>
+			<option value="2080P0210X">Pediatrics, Pediatric Nephrology</option>
+			<option value="2080P0214X">Pediatrics, Pediatric Pulmonology</option>
+			<option value="2080P0216X">Pediatrics, Pediatric Rheumatology</option>
+			<option value="2080T0004X">Pediatrics, Pediatric Transplant Hepatology</option>
+			<option value="2080S0012X">Pediatrics, Sleep Medicine</option>
+			<option value="2080S0010X">Pediatrics, Sports Medicine</option>
 			<option value="2086S0129X">Peripheral Vascular Disease</option>
+			<option value="213E00000X">Podiatrist</option>
+			<option value="213ES0103X">Podiatrist, Foot & Ankle Surgery</option>
+			<option value="213ES0131X">Podiatrist, Foot Surgery</option>
+			<option value="213EG0000X">Podiatrist, General Practice</option>
+			<option value="213EP1101X">Podiatrist, Primary Podiatric Medicine</option>
+			<option value="213EP0504X">Podiatrist, Public Medicine</option>
+			<option value="213ER0200X">Podiatrist, Radiology</option>
+			<option value="335V00000X">Portable X-Ray Supplier</option>
+			<option value="213ES0000X">Podiatrist, Sports Medicine</option>
+			<option value="224P00000X">Prosthetist</option>
+			<option value="333600000X">Pharmacy</option>
+			<option value="3336C0002X">Pharmacy, Clinic Pharmacy</option>
+			<option value="3336C0003X">Pharmacy, Community/Retail Pharmacy</option>
+			<option value="3336C0004X">Pharmacy, Compounding Pharmacy</option>
+			<option value="3336H0001X">Pharmacy, Home Infusion Therapy Pharmacy</option>
+			<option value="3336I0012X">Pharmacy, Institutional Pharmacy</option>
+			<option value="3336L0003X">Pharmacy, Long-term Care Pharmacy</option>
+			<option value="3336M0002X">Pharmacy, Mail Order Pharmacy</option>
+			<option value="3336M0003X">Pharmacy, Managed Care Organization Pharmacy</option>
+			<option value="3336N0007X">Pharmacy, Nuclear Pharmacy</option>
+			<option value="3336S0011X">Pharmacy, Specialty Pharmacy</option>
+			<option value="273R00000X">Psychiatric Unit</option>
+			<option value="2084N0400X">Psychiatry and Neurology, Neurology</option>
+			<option value="2084N0402X">Psychiatry and Neurology, Neurology with Special Qualifications in Child Neurology</option>
 			<option value="225100000X">Physical Therapy</option>
+			<option value="2251C2600X">Physical Therapist, Cardiopulmonary</option>
+			<option value="2251E1300X">Physical Therapist, Electrophysiology, Clinical</option>
+			<option value="2251E1200X">Physical Therapist, Ergonomics</option>
+			<option value="2251G0304X">Physical Therapist, Geriatrics</option>
+			<option value="2251H1200X">Physical Therapist, Hand</option>
+			<option value="2251H1300X">Physical Therapist, Human Factors</option>
+			<option value="2251N0400X">Physical Therapist, Neurology</option>
+			<option value="2251X0800X">Physical Therapist, Orthopedic</option>
+			<option value="2251P0200X">Physical Therapist, Pediatrics</option>
+			<option value="2251S0007X">Physical Therapist, Sports</option>
 			<option value="208100000X">Physical Medicine and Rehabilitation</option>
+			<option value="2081H0002X">Physical Medicine & Rehabilitation, Hospice and Palliative Medicine</option>
+			<option value="2081N0008X">Physical Medicine & Rehabilitation, Neuromuscular Medicine</option>
+			<option value="2081P2900X">Physical Medicine & Rehabilitation, Pain Medicine</option>
+			<option value="2081P0010X">Physical Medicine & Rehabilitation, Pediatric Rehabilitation Medicine</option>
+			<option value="2081P0004X">Physical Medicine & Rehabilitation, Spinal Cord Injury Medicine</option>
+			<option value="2081S0010X">Physical Medicine & Rehabilitation, Sports Medicine</option>
+			<option value="363A00000X">Physician Assistant</option>
+			<option value="363AM0700X">Physician Assistant, Medical</option>
+			<option value="363AS0400X">Physician Assistant, Surgical</option>
+			<option value="367H00000X">Physician Assistants & Advanced Practice Nursing Providers/Anesthesiologist Assistant</option>
+			<option value="293D00000X">Physiological Laboratory</option>
 			<option value="208200000X">Plastic and Reconstructive Surgery</option>
+			<option value="208200000X">Plastic Surgery</option>
+			<option value="2082S0099X">Plastic Surgery/Plastic Surgery Within the Head & Neck</option>
+			<option value="2082S0105X">Plastic Surgery/Surgery of the Hand</option>
 			<option value="213E00000X">Podiatry</option>
 			<option value="251K00000X">Public Health or Welfare Agency</option>
 			<option value="207RP1001X">Pulmonary Disease</option>
 			<option value="2083A0100X">Preventive Medicine</option>
+			<option value="2083A0100X">Preventive Medicine, Aerospace Medicine</option>
+			<option value="2083T0002X">Preventive Medicine, Medical Toxicology</option>
+			<option value="2083X0100X">Preventive Medicine, Occupational Medicine</option>
+			<option value="2083P0500X">Preventive Medicine, Preventive Medicine/Occupational Environmental Medicine</option>
+			<option value="2083P0901X">Preventive Medicine, Public Health & General Preventive Medicine</option>
+			<option value="2083S0010X">Preventive Medicine, Sports Medicine</option>
+			<option value="2083P0011X">Preventive Medicine, Undersea and Hyperbaric Medicine</option>
+			<option value="283Q00000X">Psychiatric Hospital</option>
 			<option value="2084P0800X">Psychiatry</option>
-			<option value="103T00000X">Psychologist, Clinical</option>
-			<option value="261QR0200X">Radiation Therapy Center</option>
-			<option value="2085R0001X">Radiation Oncology</option>
+			<option value="2084A0401X">Psychiatry & Neurology</option>
+			<option value="2084P0802X">Psychiatry & Neurology, Addiction Psychiatry</option>
+			<option value="2084B0002X">Psychiatry & Neurology, Bariatric Medicine</option>
+			<option value="2084P0804X">Psychiatry & Neurology, Child & Adolescent Psychiatry</option>
+			<option value="2084N0600X">Psychiatry & Neurology, Clinical Neurophysiology</option>
+			<option value="2084D0003X">Psychiatry & Neurology, Diagnostic Neuroimaging</option>
+			<option value="2084F0202X">Psychiatry & Neurology, Forensic Psychiatry</option>
+			<option value="2084P0805X">Psychiatry & Neurology, Geriatric Psychiatry</option>
+			<option value="2084H0002X">Psychiatry & Neurology, Hospice & Palliative Medicine</option>
+			<option value="2084P0005X">Psychiatry & Neurology, Neurodevelopmental Disabilities</option>
+			<option value="2084N0400X">Psychiatry & Neurology, Neurology</option>
+			<option value="2084N0402X">Psychiatry & Neurology, Neurology with Special Qualifications in Child Neurology</option>
+			<option value="2084N0008X">Psychiatry & Neurology, Neuromuscular Medicine</option>
+			<option value="2084P2900X">Psychiatry & Neurology, Pain Medicine</option>
+			<option value="2084P0015X">Psychiatry & Neurology, Psychosomatic Medicine</option>
+			<option value="2084S0012X">Psychiatry & Neurology, Sleep Medicine</option>
+			<option value="2084S0010X">Psychiatry & Neurology, Sports Medicine</option>
+			<option value="2084V0102X">Psychiatry & Neurology, Vascular Neurology</option>
+			<option value="103T00000X">Psychologist</option>
+			<option value="103TA0400X">Psychologist, Addiction (Substance Abuse Disorder)</option>
+			<option value="103TA0700X">Psychologist, Adult Development & Aging</option>
+			<option value="103TC0700X">Psychologist, Clinical</option>
+			<option value="103TC2200X">Psychologist, Clinical Child & Adolescent</option>
+			<option value="103TB0200X">Psychologist, Cognitive & Behavioral</option>
+			<option value="103TC1900X">Psychologist, Counseling</option>
+			<option value="103TE1000X">Psychologist, Educational</option>
+			<option value="103TE1100X">Psychologist, Exercise & Sports</option>
+			<option value="103TF0000X">Psychologist, Family</option>
+			<option value="103TF0200X">Psychologist, Forensic</option>
+			<option value="103TP2701X">Psychologist, Group Psychotherapy</option>
+			<option value="103TH0004X">Psychologist, Health</option>
+			<option value="103TH0100X">Psychologist, Health Service</option>
+			<option value="103TM1700X">Psychologist, Men & Masculinity</option>
+			<option value="103TM1800X">Psychologist, Mental Retardation & Developmental Disabilities</option>
+			<option value="103TP0016X">Psychologist, Prescribing (Medical)</option>
+			<option value="103TP0814X">Psychologist, Psychoanalysis</option>
+			<option value="103TP2700X">Psychologist, Psychotherapy</option>
+			<option value="103TR0400X">Psychologist, Rehabilitation</option>
+			<option value="103TS0200X">Psychologist, School</option>
+			<option value="103TW0100X">Psychologist, Women</option>
+			<option value="2085R0202X">Radiology, Diagnostic Radiology</option>
+			<option value="261QR0200X">Radiology, Radiation Therapy Center</option>
+			<option value="2085R0001X">Radiology, Radiation Oncology</option>
+			<option value="2085R0204X">Radiology, Vascular and Interventional Radiology</option>
 			<option value="133V00000X">Registered Dietitian or Nutrition Professiona</option>
+			<option value="282J00000X">Religious Non-medical Health Care Institution</option>
+			<option value="283X00000X">Rehabilitation Hospital</option>
+			<option value="273Y00000X">Rehabilitation Unit</option>
 			<option value="207RR0500X">Rheumatology</option>
+			<option value="314000000X">Skilled Nursing Facility</option>
+			<option value="235Z00000X">Speech, Language and Hearing Service Providers</option>
 			<option value="235Z00000X">Speech Language Pathologist</option>
 			<option value="207XX0005X">Sports Medicine</option>
+			<option value="332B00000X">Suppliers/Durable Medical Equipment & Medical Supplies</option>
+			<option value="332BX2000X">Suppliers/Durable Medical Equipment & Medical Supplies, Oxygen Equipment & Supplies</option>
+			<option value="333600000X">Suppliers/Pharmacy</option>
+			<option value="3336C0002X">Suppliers/Pharmacy, Clinic Pharmacy</option>
+			<option value="3336C0003X">Suppliers/Pharmacy, Community/Retail Pharmacy</option>
+			<option value="3336C0004X">Suppliers/Pharmacy, Compounding Pharmacy</option>
+			<option value="3336H0001X">Suppliers/Pharmacy, Home Infusion Therapy Pharmacy</option>
+			<option value="3336I0012X">Suppliers/Pharmacy, Institutional Pharmacy</option>
+			<option value="3336L0003X">Suppliers/Pharmacy, Long-term Care Pharmacy</option>
+			<option value="3336M0002X">Suppliers/Pharmacy, Mail Order Pharmacy</option>
+			<option value="3336M0003X">Suppliers/Pharmacy, Managed Care Organization Pharmacy</option>
+			<option value="3336N0007X">Suppliers/Pharmacy, Nuclear Pharmacy</option>
+			<option value="3336S0011X">Suppliers/Pharmacy, Specialty Pharmacy</option>
+			<option value="335U00000X">Suppliers/Organ Procurement Organization</option>
+			<option value="2086H0002X">Surgery/Hospice and Palliative Medicine</option>
+			<option value="2086S0120X">Surgery/Pediatric Surgery</option>
+			<option value="2086S0122X">Surgery/Plastic and Reconstructive Surgery</option>
+			<option value="2086S0105X">Surgery/Surgery of the Hand</option>
+			<option value="2086S0102X">Surgery/Surgical Critical Care</option>
+			<option value="2086X0206X">Surgery/Surgical Oncology</option>
+			<option value="2086S0127X">Surgery/Trauma Surgery</option>
+			<option value="2086S0129X">Surgery/Vascular Surgery</option>
 			<option value="2086X0206X">Surgical Oncology</option>
 			<option value="208G00000X">Thoracic Surgery</option>
+			<option value="156FX1800X">Technician/Technologist, Optician</option>
+			<option value="204F00000X">Transplant Surgery</option>
 			<option value="208800000X">Urology</option>
+			<option value="2088P0231X">Urology, Pediatric Urology</option>
 			<option value="2086S0129X">Vascular Surgery</option>
 			<option value="174M00000X">Veterinarian</option>
 			<option value="251V00000X">Voluntary Health or Charitable Agency</option>
 				 
-		</select>
+		</select> <br> <br>
 		
-   	 	<input id="addressInput" type="text" size="45" name="address" placeholder="Enter address, city and state or city state"> 
+   	 	<input id="addressInput" style="height:27px;" type="text" size="45" name="address" placeholder="Enter Address,City,State or City,State" onkeyup="stopped()"required> 
 		&nbsp <select style="height:27px;" id="radius" name="radius"> 
 			<option value="10">10</option>
 			<option value="25">25</option>
 			<option value="50">50</option>
-		</select> &nbsp Search Distance  
-		<br> <h4> This location/Physician search will currently find any facility in NJ, NY and CT State. To submit physician list <a href="contact.html">contact us</a></h4>
+		</select>  Search Distance in Miles </h4>
+		<h4> This Location/Physician search will find any facility in NJ, NY and CT States, USA. To submit Physician list <a href="contact.html">contact us</a></h4>
 		<br>
-		<input type="button" onclick="loadDoc()" value="search">
+		<input type="button" id="clickSearch" onclick="loadDoc()" value="Search">
 		
-
 	</form>  <br>
 <div style="float:left" id="response"></div>
 
-<div id="dawg" style="display:none">
+<div id="Advertisement">
 <iframe id="myFrame" src="https://www.coppertone.com/" width="500" height="700"></iframe>
 </div>
 
 
 <div style="display:none" id="displayArea"></div>
 <div id="fileDisplayArea"></div><br>
+<div id="toast"></div><br>
 <div border='1' id="show"></div> 
+</div>
 
-<script>
-   var map;
-    var markers = [];
-    var infoWindow;
-    var locationSelect;   
+<script> 
 
-<--! function used to get address in latitude and longitude and display advertising -->
 function loadDoc() {
-	var latitude="";var longtitude="";
-	var radius = document.getElementById('radius').value; <--! get radius selected-->
-	var taxonomy = document.getElementById('speciality').value; <--! get speciality selected-->
+	var latitude="";var longitude="";
+	var radius = document.getElementById('radius').value;
+	var taxonomy = document.getElementById('speciality').value;
 		document.getElementById("dawg").style.display = "block";
 		document.getElementById("fileDisplayArea").innerHTML = "SEARCHING...";
-	<--! based on speciality selected appropriate advertisement will be displayed-->
 	if(taxonomy=="225100000X"){
 		document.getElementById("myFrame").src = "https://www.activeforever.com/orthopedics";         	
 	}
@@ -212,61 +572,39 @@ function loadDoc() {
 	else if(taxonomy==""){
 		document.getElementById("myFrame").src = "https://www.coppertone.com/";         	
 	}
-	
-	<--! geocode function that turns address to latitude and longitude-->
+	else{
+		document.getElementById("myFrame").src = "https://www.coppertone.com/";
+	}
+
 	var address = document.getElementById("addressInput").value;
-       var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({address: address}, function(results, status) {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({address: address}, function(results, status) {
 		latitude = results[0].geometry.location.lat();
 		longitude = results[0].geometry.location.lng();
-	
-		<--! ajax function that sends longitude, latitude, speciality and radius to php file -->		
+		
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
     		if (xhttp.readyState == 4 && xhttp.status == 200) {
-    			<--! "DIV" where ajax response is displayed -->
       			document.getElementById("fileDisplayArea").innerHTML = xhttp.responseText;
 			}
 		};
-		
-		xhttp.open("GET", "getItDone.php?lng="+longitude+"&lat="+latitude+"&tax="+taxonomy+"&radius="+radius, true);
+		xhttp.open("GET","getItDone.php?lng="+longitude+"&lat="+latitude+"&tax="+taxonomy+"&radius="+radius, true);
   		xhttp.send();		
 
 	});
- 	 
 }
-<--! function to be used to clear markers on the google maps -->
-function clearLocations() {
-     infoWindow.close();
-     for (var i = 0; i < markers.length; i++) {
-       markers[i].setMap(null);
-     }
-     markers.length = 0;
-
-     locationSelect.innerHTML = "";
-     var option = document.createElement("option");
-     option.value = "none";
-     option.innerHTML = "See all results:";
-     locationSelect.appendChild(option);
-}
-<--! Function to be used to initiate google map -->
-function initMap() {
-     var mapDiv = document.getElementById('map');
-     var map = new google.maps.Map(mapDiv, {center: {lat: 44.540, lng: -78.546},zoom: 8});
-}
-
 
 </script>
    <script src="libraries/jquery/dist/jquery.js"></script>
-   <script src="https://maps.googleapis.com/maps/api/js" async defer></script>  
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXMzM-AwQGWgCR1wd4k-FkA82cE_XFv5Q"></script>  
+  
    <script src="show.js"></script>
    <div class="push"></div>
-   </div>
    <div class="footer" class="navbar-fixed-bottom">
       <div class="container">
          <p>Copyright &copy 2016 Hitslab LLC. All Rights Reserved.</p>
       </div>
    </div>
-
+	
 </body>
 </html>
